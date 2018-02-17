@@ -1,5 +1,6 @@
 package com.blundell.notifications;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
@@ -63,9 +64,13 @@ public class MainActivity extends AppCompatActivity {
         seriousNotification.setTimeoutAfter(TimeUnit.HOURS.toMillis(1));
 
         // Settings https://developer.android.com/reference/android/app/Notification.Builder.html#setSettingsText(java.lang.CharSequence)
-
-//        ((Notification.Builder) funnyNotification).setSettingsText("Testing 1 2 3");
-//        funnyNotification.setSettingsText("");
+        Notification.Builder b = new Notification.Builder(this, "ddd")
+            .setSmallIcon(android.R.drawable.ic_notification_clear_all)
+            .setContentTitle("My notification")
+            .setContentText("setting text test")
+            .setChannelId(SUPER_SERIOUS_CHANNEL_ID)
+            .setSettingsText("HELLO ??");
+        notificationManager.notify(123, b.build());
 
         // Dismissal https://developer.android.com/reference/android/service/notification/NotificationListenerService.html#onNotificationRemoved(android.service.notification.StatusBarNotification)
 
