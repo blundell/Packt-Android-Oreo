@@ -15,7 +15,17 @@
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
+
     </activity>
+
+    <activity android:name=".SettingActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.NOTIFICATION_PREFERENCES" />
+      </intent-filter>
+
+    </activity>
+
 
     <service
       android:name=".NotificationListener"
