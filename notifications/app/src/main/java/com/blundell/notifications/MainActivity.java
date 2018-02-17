@@ -73,28 +73,24 @@ public class MainActivity extends AppCompatActivity {
         notificationManager.notify(123, b.build());
 
         // Dismissal https://developer.android.com/reference/android/service/notification/NotificationListenerService.html#onNotificationRemoved(android.service.notification.StatusBarNotification)
-
         // to monitor for dismissal we register a service in the manifest
         // however the user then needs to give us permission to monitor
         // https://github.com/Chagall/notification-listener-service-example/blob/master/app/src/main/java/com/github/chagall/notificationlistenerexample/MainActivity.java#L146
+        // see NotificationListener.java
 
         // Background color https://developer.android.com/reference/android/app/Notification.Builder.html#setColor(int)
         // You can set and enable a background color for a notification. You should only use this feature in notifications for ongoing tasks which are critical for a user to see at a glance
         funnyNotification.setColor(Color.RED);
         funnyNotification.setColorized(true);
-        funnyNotification.setStyle(new android.support.v4.media.app.NotificationCompat.MediaStyle()
-                                       .setMediaSession(null)); // doesn't work
 
         // Messaging style https://developer.android.com/reference/android/app/Notification.MessagingStyle.html
-
         NotificationCompat.MessagingStyle messagingStyle = new NotificationCompat.MessagingStyle("Tim");
-        NotificationCompat.MessagingStyle.Message msg = new NotificationCompat.MessagingStyle.Message("hello msg", System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(3), "your mum");
-        NotificationCompat.MessagingStyle.Message msg2 = new NotificationCompat.MessagingStyle.Message("hello ?", System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(2), "your mum");
-        NotificationCompat.MessagingStyle.Message msg3 = new NotificationCompat.MessagingStyle.Message("omg reply", System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(1), "your mum");
+        NotificationCompat.MessagingStyle.Message msg = new NotificationCompat.MessagingStyle.Message("hello msg", System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(3), "Stan");
+        NotificationCompat.MessagingStyle.Message msg2 = new NotificationCompat.MessagingStyle.Message("hello ?", System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(2), "Stan");
+        NotificationCompat.MessagingStyle.Message msg3 = new NotificationCompat.MessagingStyle.Message("omg reply", System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(1), "Stan");
         messagingStyle.addMessage(msg);
         messagingStyle.addMessage(msg2);
         messagingStyle.addMessage(msg3);
-//        messagingStyle.addHistoricMessage()
         seriousNotification.setStyle(messagingStyle);
 
         notificationManager.createNotificationChannelGroups(Arrays.asList(funnyGroup, seriousGroup));
